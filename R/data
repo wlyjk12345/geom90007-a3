@@ -1,4 +1,2 @@
-bays = read.csv("../Data/on-street-parking-bays.csv", stringsAsFactors = FALSE)
-sensors = read.csv("../Data/on-street-parking-bay-sensors.csv", stringsAsFactors = FALSE)
-restrictions = read.csv("../Data/on-street-parking-bay-restrictions.csv", stringsAsFactors = FALSE)
-
+bars_and_pubs = read.csv("../Data/bars-and-pubs-with-patron-capacity.csv", stringsAsFactors = FALSE)
+cafes_and_restaurants = read.csv("../Data/cafes-and-restaurants-with-seating-capacity.csv", stringsAsFactors = FALSE)
