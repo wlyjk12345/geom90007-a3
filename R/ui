@@ -1,6 +1,6 @@
 
 
-google_api_key <- "AIzaSyAjpmloNDdHLbV1niWipE2h41fYrmDcwbE"
+google_api_key <- ""
 
 ui <- fluidPage(
   titlePanel("Melbourne Coffee Shops"),
