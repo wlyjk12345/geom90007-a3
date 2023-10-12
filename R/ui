@@ -1,19 +1,22 @@
-
-
-google_api_key <- ""
-
 ui <- fluidPage(
-  titlePanel("Melbourne Coffee Shops"),
+  titlePanel("Melbourne facility"),
   sidebarLayout(
     sidebarPanel(
-      h3("Search Coffee Shops"),
-      textInput("geocode", "Type an address or location", placeholder = "e.g., 123 Collins St"),
+      h3("Search "),
+      textInput("geocode", "Type the name", placeholder = "e.g., McDonald"),
       actionButton("go", "Search!"),
       br(),
-      helpText("Use the search bar to find coffee shops in Melbourne.")
+      checkboxGroupInput("filter", "Filter by category:",
+                         choices = c("Cafes and Restaurants", "Takeaway Food Services", 
+                                     "Pubs, Taverns and Bars", "Accommodation", 
+                                     "Bakery Product Manufacturing (Non-factory based)"),
+                         selected = c("Cafes and Restaurants", "Takeaway Food Services", 
+                                      "Pubs, Taverns and Bars", "Accommodation", 
+                                      "Bakery Product Manufacturing (Non-factory based)")),
+      helpText("Use the search bar to find facility in Melbourne.")
     ),
     mainPanel(
-      leafletOutput("map")
+      leafletOutput("map", height = 1000, width = 600)
     )
   )
 )
