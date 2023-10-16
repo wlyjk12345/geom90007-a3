@@ -193,7 +193,7 @@ server_weather <- function(input, output) {
                title = list(text = "")) %>%
       hc_yAxis(title = list(text = "Temperature"), 
                labels = list(format = "{value} ºC")) %>%
-      hc_title(text = "Temperature Forecast in Next 5 Days") %>%
+      hc_title(text = "Temperature Forecast in the Next 5 Days") %>%
       hc_tooltip(pointFormat = "<br/>Temperature: <b>{point.temp} ºC</b>
                  <br/>Feels Like: <b>{point.fl_temp} ºC</b>") %>%
       hc_plotOptions(series = list(animation = list(duration = 2500))) %>%
@@ -222,7 +222,7 @@ server_weather <- function(input, output) {
                min = 0) %>%
       hc_title(text = "Probability of Precipitation in the Next 5 Days") %>%
       hc_tooltip(pointFormat = "<br/>Probability of Precipitation: <b>{point.y}%</b>") %>%
-      hc_plotOptions(series = list(animation = list(duration = 3000))) %>%
+      hc_plotOptions(series = list(animation = list(duration = 2500))) %>%
       hc_colors("#4285F4") %>%
       hc_add_theme(hc_theme)
   })
@@ -247,7 +247,7 @@ server_weather <- function(input, output) {
                title = list(text = "")) %>%
       hc_yAxis(title = list(text = "Wind Speed"), 
                labels = list(format = "{value} m/s")) %>%
-      hc_title(text = "Wind Speed Forecast in Next 5 Days") %>%
+      hc_title(text = "Wind Speed Forecast in the Next 5 Days") %>%
       hc_tooltip(pointFormat = "<br/>Wind Speed: <b>{point.wind_speed} m/s</b>") %>%
       hc_plotOptions(series = list(animation = list(duration = 2500))) %>%
       hc_colors("teal") %>%
@@ -271,7 +271,7 @@ server_weather <- function(input, output) {
                title = list(text = "")) %>%
       hc_yAxis(title = list(text = "Humidity"), 
                labels = list(format = "{value}%")) %>%
-      hc_title(text = "Forecast Humidity of Next 5 Days") %>%
+      hc_title(text = "Humidity Forecast in the Next 5 Days") %>%
       hc_tooltip(pointFormat = "<br/>Forecast: <b>{point.humidity}%</b>") %>%
       hc_plotOptions(series = list(animation = list(duration = 2500))) %>%
       hc_colors("#80b1d3") %>%
