@@ -1,29 +1,8 @@
+source("libraries.R")
+source("data.R")
+source("icon.R")
+source("ui.R");
 server <- function(input, output) {
-  cafes_data <- st_read("cafes-and-restaurants-with-seating-capacity.geojson")
-  selected_categories <- c("Cafes and Restaurants", "Takeaway Food Services", "Pubs, Taverns and Bars", "Accommodation", "Bakery Product Manufacturing (Non-factory based)")
-  cafes_data <- cafes_data %>%
-    dplyr::filter(census_year == "2021" & industry_anzsic4_description %in% selected_categories & !st_is_empty(geometry)) %>%
-    group_by(business_address, longitude, latitude, industry_anzsic4_description) %>% 
-    summarise(
-      total_seats = sum(number_of_seats, na.rm = TRUE),
-      trading_name = first(trading_name)
-    ) %>% 
-    ungroup()
-  
-  coords <- st_coordinates(st_geometry(cafes_data))
-  cafes_data$longitude <- coords[, "X"]
-  cafes_data$latitude <- coords[, "Y"]
-  
-  get_icon <- function(description) {
-    switch(description,
-           "Cafes and Restaurants" = "icon/cafe.png",
-           "Takeaway Food Services" = "icon/takeout_food.png",
-           "Pubs, Taverns and Bars" = "icon/bar.png",
-           "Accommodation" = "icon/accomodation.png",
-           "Bakery Product Manufacturing (Non-factory based)" = "icon/bakery.png"
-    )
-  }
-  
   cafes_data$iconUrl <- sapply(cafes_data$industry_anzsic4_description, get_icon)
   
   output$map <- renderLeaflet({
@@ -69,4 +48,71 @@ server <- function(input, output) {
                  popup = ~paste("<strong>", trading_name, "</strong><br>", business_address))
   })
   
+  ################For Local Facilities#######################
+  output$newTabMap <- renderLeaflet({
+    map <- leaflet() %>%
+      addProviderTiles(providers$OpenStreetMap) %>%
+      setView(144.9631, -37.8136, zoom = 16) %>%
+      addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
+                 icon = ~wifi_icon,popup = ~paste(Name, "<br>", Long.Name, "<br>Type:", Type, "<br>Status:", Status),
+                 group = "wifiLayer")%>%
+      addMarkers(data = tram_stops,
+                 ~Longitude, ~Latitude,
+                 icon = ~tram_icon,
+                 popup = ~paste(name, "<br>", stop_no),
+                 group = "tramLayer")%>%
+      addMarkers(data = bus_stops,
+                 ~Longitude, ~Latitude,
+                 icon = ~bus_icon,
+                 popup = ~paste(Name, "<br>", Stop.Number,"<br>",Address),
+                 group = "busLayer")%>%
+      addMarkers(data = bike_share_dock,
+                 ~lon, ~lat,
+                 icon = ~bike_icon,
+                 popup = ~paste(name, "<br>", capacity),
+                 group = "bikeLayer")
+    map <- addPolylines(map, data = coordinates_df, 
+                        lng = ~lon, lat = ~lat, 
+                        color = "blue", group = "routeLayer")
+  })
+  
+  observe({
+    # Re-initialize the map
+    leafletProxy("newTabMap") %>% clearMarkers()
+    leafletProxy("newTabMap") %>% clearShapes()
+    
+    if ("WiFi" %in% input$newTabFilter) {
+      leafletProxy("newTabMap") %>%
+        addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
+                   icon = ~wifi_icon, popup = ~paste(Name, "<br>", Long.Name, "<br>Type:", Type, "<br>Status:", Status))
+    }
+    
+    if ("Tram Stops" %in% input$newTabFilter) {
+      leafletProxy("newTabMap") %>%
+        addMarkers(data = tram_stops, ~Longitude, ~Latitude, 
+                   icon = ~tram_icon, popup = ~paste(name, "<br>", stop_no))
+    }
+    
+    if ("Bus Stops" %in% input$newTabFilter) {
+      leafletProxy("newTabMap") %>%
+        addMarkers(data = bus_stops, ~Longitude, ~Latitude, 
+                   icon = ~bus_icon, popup = ~paste(Name, "<br>", Stop.Number, "<br>", Address))
+    }
+    
+    if ("Bike Share Docks" %in% input$newTabFilter) {
+      leafletProxy("newTabMap") %>%
+        addMarkers(data = bike_share_dock, ~lon, ~lat, 
+                   icon = ~bike_icon, popup = ~paste(name, "<br>", capacity))
+    }
+    if ("Routes" %in% input$newTabFilter) {
+        leafletProxy("newTabMap") %>%
+            addPolylines(data = coordinates_df, 
+                         lng = ~lon, lat = ~lat, 
+                         color = "blue")
+    }
+  })
+  
+  
 }
+
+shinyApp(ui, server)

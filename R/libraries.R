@@ -24,7 +24,10 @@ dependencies <- c(
   "RSocrata",
   "geojsonio",
   "rgeos",
-  "shinyalert"
+  "shinyalert",
+  "readr",
+  "sf",
+  "leaflet.extras"
 )
 
 #' Attempts to load packages and install them if required

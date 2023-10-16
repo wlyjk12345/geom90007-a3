@@ -1,3 +1,6 @@
+source("libraries.R")
+
+
 headers <- tags$head(
   # Favicon
   tags$link(
@@ -207,11 +210,11 @@ intro_panel <- tabPanel(
 )
 
 ## my ui write by Han
-your_ui <- fluidPage(
-  titlePanel("Melbourne facility"),
+life_hotspots <- tabPanel(
+  title = "Life Hotspots",
   sidebarLayout(
     sidebarPanel(
-      h3("Search "),
+      h3("Search"),
       textInput("geocode", "Type the name", placeholder = "e.g., McDonald"),
       actionButton("go", "Search!"),
       br(),
@@ -230,6 +233,22 @@ your_ui <- fluidPage(
   )
 )
 
+city_connectors <- tabPanel(
+  title = "City Connectors",
+  sidebarLayout(
+    sidebarPanel(
+      h3("Filter Local Facilities"),
+      checkboxGroupInput("newTabFilter", "Filter by type:",
+                         choices = c("WiFi", "Tram Stops", "Bus Stops", "Bike Share Docks", "Routes"),
+                         selected = c("WiFi", "Tram Stops", "Bus Stops", "Bike Share Docks", "Routes")),
+      helpText("Filter the local facilities shown on the map.")
+    ),
+    mainPanel(
+      leafletOutput("newTabMap", height = 1000, width = 600)
+    )
+  )
+)
+
 ui <- navbarPage(
   title = "ParkIt",
   map_panel,
@@ -240,7 +259,7 @@ ui <- navbarPage(
   windowTitle = "APP",       
   fluid = FALSE,
   position = "fixed-top",
-  lang = "en"
-  #Add it
-  tabItem("melbourne_facility", your_ui),
+  lang = "en",
+  city_connectors,
+  life_hotspots
 )
