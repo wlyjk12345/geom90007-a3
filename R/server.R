@@ -108,5 +108,6 @@ server <- function(input, output) {
     }
   })
   
+  ################For Weather#######################
   
 }
