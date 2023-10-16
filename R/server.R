@@ -1,7 +1,3 @@
-source("libraries.R")
-source("data.R")
-source("icon.R")
-source("ui.R");
 server <- function(input, output) {
   cafes_data$iconUrl <- sapply(cafes_data$industry_anzsic4_description, get_icon)
   
@@ -114,5 +110,3 @@ server <- function(input, output) {
   
   
 }
-
-shinyApp(ui, server)

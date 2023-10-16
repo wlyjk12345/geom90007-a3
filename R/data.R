@@ -1,4 +1,3 @@
-source("libraries.R")
 wifi_data <- read.csv("../data/Melbourne_wifi.csv", header = TRUE, stringsAsFactors = FALSE)
   wifi_data$Long.Name <- iconv(wifi_data$Long.Name, from = "UTF-8", to = "UTF-8", sub = "")
   wifi_data$Long.Name <- gsub("<a0>", " ", wifi_data$Long.Name)
