@@ -23,11 +23,14 @@ dependencies <- c(
   "pracma",
   "RSocrata",
   "geojsonio",
-  "rgeos",
   "shinyalert",
   "readr",
+  "lubridate",
+  "owmr",
   "sf",
-  "leaflet.extras"
+  "leaflet.extras",
+  "dashboardthemes",
+  "highcharter"
 )
 
 #' Attempts to load packages and install them if required
