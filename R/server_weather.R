@@ -17,82 +17,6 @@ library(rgdal)
 library(dashboardthemes)
 source("helper.R")
 
-# Define UI for application that draws a histogram
-header <- dashboardHeader(
-  # Define the header and insert image as title
-  title = tags$a(tags$img(src='https://bit.ly/3rFI94P',
-                          height='55', width='160')),
-  titleWidth = 250
-)
-
-sidebar <- dashboardSidebar(
-  width = 250,
-  sidebarMenu(
-    menuItem("Melbourne Weather",
-             tabName = "weather",
-             icon = icon('sun')),
-    menuItem("Setting",
-             tabName = "setting",
-             icon = icon("gear"),
-             radioButtons("displaymode", "Display Mode", choices = c('Light Mode' = 'lightMode', 'Dark Mode' = 'darkMode'), selected="lightMode")
-    )
-  )
-)
-
-body <- dashboardBody(
-  uiOutput("myTheme"),
-  tabItems(
-
-    tabItem("weather",
-            fluidPage(
-              h2(HTML(paste("Current Weather of Melbourne", 
-                            "<br>", 
-                            format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"))),
-                 align = "center"),
-              hr(),
-              
-              # Value box
-              fluidRow(
-                column(6, valueBoxOutput("cur_temp", width = 15)),
-                column(6, valueBoxOutput("temp_range", width = 15))
-              ),
-              fluidRow(
-                column(6, valueBoxOutput("current_condition", width = 15)),
-                column(6, valueBoxOutput("rain_5hr", width = 15))
-              ),
-              fluidRow(
-                column(6, valueBoxOutput("sunrise", width = 15)),
-                column(6, valueBoxOutput("sunset", width = 15))
-              ),
-              hr(),
-              h2("Weather Forecast of Melbourne", align = "center"), 
-              hr(),
-              fluidRow(
-                column(6, highchartOutput("weather_forecast", height = 300)),
-                column(6, highchartOutput("wind_speed_forecast", height = 300))
-              ),
-              hr(),
-              fluidRow(
-                column(6, highchartOutput("humidity_forecast", height = 300)),
-                column(6, highchartOutput("precipitation_forecast", height = 300))
-              ),
-              hr(),
-              h5('Live Weather Data Source from: ', 
-                 a("OpenWeather",
-                   href="https://openweathermap.org"))
-            )
-    )
-  )
-)
-
-# Putting the UI together
-ui <- dashboardPage(
-  title = "Visiting Melbourne",
-  header, 
-  sidebar, 
-  body
-)
-
 # Server
 
 server_weather <- function(input, output) {
@@ -278,6 +202,3 @@ server_weather <- function(input, output) {
       hc_add_theme(hc_theme)
   })
 }
-
-
-shinyApp(ui, server_weather)
