@@ -1,4 +1,5 @@
 source("helper.R")
+source("tableau-in-shiny-v1.0.R")
 # A dashboard header with 3 dropdown menus
 headers <- dashboardHeader(
   title = tags$a(tags$img(src='https://bit.ly/3rFI94P',
@@ -21,7 +22,7 @@ sidebar <- dashboardSidebar(
              tabName = "weather",
              icon = icon('sun')),
     menuItem("Pedestrian Volume Monitor",
-             tabName = "traffic",
+             tabName = "pedestrain",
              icon = icon("users")),
     menuItem("Tourism Industry Recovery",
              tabName = "tour",
@@ -169,31 +170,47 @@ weather_panel <- tabItem("weather",
                          )
 )
 
+#######################Tableau#######################
+pedestrain_panel <- tabPanel(
+  title = "pedestrain",
+  h2('Pedestrain Density Map'),
+  tableauPublicViz(
+    id = "tableauviz",
+    url = "https://public.tableau.com/shared/6K3PDC8MN?:display_count=n&:origin=viz_share_link"
+  )
+)
+#######################Tableau#######################
 
 
-ui = dashboardPage(
-    title = "visit mel",       
-    header = headers,
-    sidebar = sidebar,
-    body = dashboardBody(
-      tabItems(
-        tabItem("home",
-                intro_panel
-        ),
-        tabItem("poi",
-                poi_panel
-        ),
-        tabItem("weather",
-                weather_panel
-        ),
-        tabItem("tour",
-                tour_panel
-        ),
-        tabItem("faqs",
-                faqs_panel
-        )
-      )
+ui <- dashboardPage(
+  title = "visit mel",
+  header = headers,
+  #header = setUpTableauInShiny(),
+  sidebar = sidebar,
+  body = dashboardBody(
+    tabItems(
+      tabItem("home",
+              intro_panel
+             ),
+      tabItem("poi",
+              poi_panel
+             ),
+      tabItem("weather",
+              weather_panel
+             ),
+      ####################Tableau####################
+      tabItem("pedestrain",
+              weather_panel
+             ),
+      ####################Tableau####################
+      tabItem("tour",
+              tour_panel
+             ),
+      tabItem("faqs",
+              faqs_panel
+             )
     )
+  )
 )
 
 
