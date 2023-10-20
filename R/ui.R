@@ -54,27 +54,12 @@ intro_panel <- tabPanel(
 faqs_panel <- tabPanel(
   title = "faqs",
   class = "page-1",
-  tags$img(class = "logo", src = "./01.svg"),
-  tags$div(
-    class = "pages",
-    tags$div(
-      class = "page",
-      tags$img(src = "./02.svg"),
-      tags$p("Access parking spot availability in Melbourne in real-time.")
-    ),
-    tags$div(
-      class = "page",
-      tags$img(src = "./02.svg"),
-      tags$p(
-        "Find spots near your location, filter by how much you want to walk."
-      )
-    ),
-    tags$div(
-      class = "page",
-      tags$img(src = "./03.svg"),
-      tags$p(
-        "It just got easier to live in the most liveable city in the world."
-      )
+  fluidRow(
+    includeHTML("faqs.html"),
+    tags$head(
+      tags$link(rel = "stylesheet", 
+                type = "text/css", 
+                href = "https://ssl.gstatic.com/docs/script/css/add-ons1.css")
     )
   ),
 )
