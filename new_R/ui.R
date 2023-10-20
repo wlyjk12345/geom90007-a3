@@ -140,27 +140,29 @@ weather_panel <- tabItem("weather",
 )
 
 
-pedestrain_panel <- tabItem("pedestrain",
-                         fluidPage(
+pedestrain_panel <- tabPanel("pedestrain",
+                         # fluidPage(
                            h2("Pedestrian Density Map",
                               align = "center"),
-                           fluidRow(
-                             column(12, 
+                           # fluidRow(
+                           #   column(12, 
                                     tableauPublicViz(
                                       id = "tableauviz1",
-                                      url = "https://public.tableau.com/views/Pedestrain_Map/1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
-                             ))),
+                                      url = "https://public.tableau.com/views/Pedestrain_Map/1_1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+                             # )
+                             # )
+                             ),
                            #h2("Weather Forecast of Melbourne", align = "center"),
-                           hr(),
-                           fluidRow(
-                             column(12,
-                             tableauPublicViz(
-                               id = "tableauviz2",
-                               url = "https://public.tableau.com/views/Pedestrain_Map/1_1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
-                             )
-                           )),
+                           # hr(),
+                           # fluidRow(
+                           #   column(12,
+                           #   tableauPublicViz(
+                           #     id = "tableauviz2",
+                           #     url = "https://public.tableau.com/views/Pedestrain_Map/1_1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+                           #   )
+                           # )),
                            hr()
-                         )
+                         # )
 )
 
 ui <- dashboardPage(
