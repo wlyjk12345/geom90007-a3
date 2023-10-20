@@ -23,7 +23,7 @@ sidebar <- dashboardSidebar(
     menuItem("Pedestrian Volume Monitor",
              tabName = "pedestrain",
              icon = icon("users")),
-    menuItem("Tourism Industry Recovery",
+    menuItem("Tourist Amenities",
              tabName = "tour",
              icon = icon('plane')),
     menuItem("FAQs",
@@ -75,6 +75,11 @@ poi_panel <- tabPanel(
              ))
 
 tour_panel <- tabPanel("tour", 
+            tags$h1(class = "shiny-title","Tourist Amenities Map"),  # Add the title here
+            tags$hr(),
+            tags$p(class = "shiny-p","Discover essential tourist amenities at your fingertips with our Tourist Amenities Map. Find Wi-Fi hotspots, tram stops, bus stops, 
+                  and more to make your visit to Melbourne convenient and enjoyable. Plan your journey and explore the city with ease, thanks to this handy map."),  # Add the description here        
+                       
              sidebarLayout(
                sidebarPanel(
                  h3("Filter Local Facilities"),
@@ -116,7 +121,7 @@ weather_panel <- tabItem("weather",
                            hr(),
                            h2(class = "shiny-second-title","Weather Forecast of Melbourne"), 
                            hr(),
-                           p(class = "shiny-p","access a 5-day weather forecast for Melbourne, offering key information on wind speed, weather conditions, humidity levels, and precipitation forecasts"),
+                           p(class = "shiny-p","access a 5-day weather forecast for Melbourne, offering key information on wind speed, weather conditions, humidity levels, and precipitation forecasts."),
                            hr(),
                            fluidRow(
                              column(6, highchartOutput("weather_forecast", height = 300)),
@@ -178,7 +183,7 @@ ui <- dashboardPage(
               weather_panel
       ),
       tabItem("pedestrain",
-              pedestrain_panel
+              intro_panel #pedestrain_panel
       ),
       tabItem("tour",
               tour_panel
