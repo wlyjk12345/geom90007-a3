@@ -50,22 +50,22 @@ server <- function(input, output) {
       addProviderTiles(providers$OpenStreetMap) %>%
       setView(144.9631, -37.8136, zoom = 16) %>%
       addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
-                 icon = ~wifi_icon,popup = ~paste(Name, "<br>", Long.Name, "<br>Type:", Type, "<br>Status:", Status),
+                 icon = ~wifi_icon,popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Long Name:</strong>", Long.Name, "<br><strong>Type:</strong>", Type, "<br><strong>Status:</strong>", Status),
                  group = "wifiLayer")%>%
       addMarkers(data = tram_stops,
                  ~Longitude, ~Latitude,
                  icon = ~tram_icon,
-                 popup = ~paste(name, "<br>", stop_no),
+                 popup = ~paste("<strong>Name:</strong>", name, "<br>", "<strong>Stop Number:</strong>", stop_no),
                  group = "tramLayer")%>%
       addMarkers(data = bus_stops,
                  ~Longitude, ~Latitude,
                  icon = ~bus_icon,
-                 popup = ~paste(Name, "<br>", Stop.Number,"<br>",Address),
+                 popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Stop Number:</strong>", Stop.Number, "<br><strong>Address:</strong>", Address),
                  group = "busLayer")%>%
       addMarkers(data = bike_share_dock,
                  ~lon, ~lat,
                  icon = ~bike_icon,
-                 popup = ~paste(name, "<br>", capacity),
+                 popup = ~paste("<strong>Name:</strong>", name, "<br><strong>Capacity:</strong>", capacity),
                  group = "bikeLayer")
     map <- addPolylines(map, data = coordinates_df, 
                         lng = ~lon, lat = ~lat, 
@@ -80,25 +80,25 @@ server <- function(input, output) {
     if ("WiFi" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
-                   icon = ~wifi_icon, popup = ~paste(Name, "<br>", Long.Name, "<br>Type:", Type, "<br>Status:", Status))
+                   icon = ~wifi_icon, popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Long Name:</strong>", Long.Name, "<br><strong>Type:</strong>", Type, "<br><strong>Status:</strong>", Status))
     }
     
     if ("Tram Stops" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = tram_stops, ~Longitude, ~Latitude, 
-                   icon = ~tram_icon, popup = ~paste(name, "<br>", stop_no))
+                   icon = ~tram_icon, popup = ~paste("<strong>Name:</strong>", name, "<br>", "<strong>Stop Number:</strong>", stop_no))
     }
     
     if ("Bus Stops" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = bus_stops, ~Longitude, ~Latitude, 
-                   icon = ~bus_icon, popup = ~paste(Name, "<br>", Stop.Number, "<br>", Address))
+                   icon = ~bus_icon, popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Stop Number:</strong>", Stop.Number, "<br><strong>Address:</strong>", Address))
     }
     
     if ("Bike Share Docks" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = bike_share_dock, ~lon, ~lat, 
-                   icon = ~bike_icon, popup = ~paste(name, "<br>", capacity))
+                   icon = ~bike_icon, popup = ~paste("<strong>Name:</strong>", name, "<br><strong>Capacity:</strong>", capacity))
     }
     if ("Routes" %in% input$newTabFilter) {
         leafletProxy("newTabMap") %>%
