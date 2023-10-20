@@ -1,0 +1,61 @@
+/* Reset some default styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 20px;
+}
+h2 {
+    font-size: 20px;
+    color: #333;
+    margin-left: 20px;
+}
+p {
+    font-size: 16px;
+    color: #555;
+    margin-left: 20px;
+}
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.shiny-title {
+    /* Your styles for <h1> elements here */
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 20px;
+    /* Add other styles as needed */
+}
+
+.shiny-second-title {
+    /* Your styles for <h1> elements here */
+    font-size: 20px;
+    color: #333;
+    margin-left: 20px;
+    /* Add other styles as needed */
+}
+.shiny-p {
+    /* Your styles for <h1> elements here */
+    font-size: 16px;
+    color: #555;
+    margin-left: 20px;
+    /* Add other styles as needed */
+}
+
+/* CSS style for the footer note */
+.footer-note {
+    font-size: 14px; /* Set the font size */
+    color: #666; /* Set the text color to gray */
+    margin-top: 20px; /* Add top margin to increase spacing from the content above */
+    margin-left: 20px;
+    /* You can add other styles as needed */
+}

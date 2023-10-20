@@ -41,11 +41,6 @@ intro_panel <- tabPanel(
   class = "page-1",
   fluidRow(
     includeHTML("home.html"),
-    tags$head(
-      tags$link(rel = "stylesheet", 
-                type = "text/css", 
-                href = "https://ssl.gstatic.com/docs/script/css/add-ons1.css")
-    )
   ),
 )
 
@@ -54,12 +49,7 @@ faqs_panel <- tabPanel(
   class = "page-1",
   fluidRow(
     includeHTML("faqs.html"),
-    tags$head(
-      tags$link(rel = "stylesheet", 
-                type = "text/css", 
-                href = "https://ssl.gstatic.com/docs/script/css/add-ons1.css")
-    )
-  ),
+),
 )
 
 poi_panel <- tabPanel(
@@ -101,12 +91,15 @@ tour_panel <- tabPanel("tour",
 
 weather_panel <- tabItem("weather",
                          fluidPage(
-                           h2(HTML(paste("Current Weather of Melbourne", 
-                                         "<br>", 
-                                         format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"))),
-                              align = "center"),
+                           #h2(HTML(paste("Current Weather of Melbourne", 
+                           #               "<br>", 
+                           #              format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"))),
+                           #    align = "center"),
+                           h1(class = "shiny-title","Today Weather of Melbourne"),
                            hr(),
-                           
+                           p(class = "shiny-p", HTML(paste("Today is",format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"), 
+                                                           ". Melbourne's weather is known for its unpredictability, so it's a good idea to be prepared for all seasons in a single day." ))),
+                           hr(),
                            # Value box
                            fluidRow(
                              column(6, valueBoxOutput("cur_temp", width = 15)),
@@ -121,7 +114,9 @@ weather_panel <- tabItem("weather",
                              column(6, valueBoxOutput("sunset", width = 15))
                            ),
                            hr(),
-                           h2("Weather Forecast of Melbourne", align = "center"), 
+                           h2(class = "shiny-second-title","Weather Forecast of Melbourne"), 
+                           hr(),
+                           p(class = "shiny-p","access a 5-day weather forecast for Melbourne, offering key information on wind speed, weather conditions, humidity levels, and precipitation forecasts"),
                            hr(),
                            fluidRow(
                              column(6, highchartOutput("weather_forecast", height = 300)),
@@ -133,7 +128,7 @@ weather_panel <- tabItem("weather",
                              column(6, highchartOutput("precipitation_forecast", height = 300))
                            ),
                            hr(),
-                           h5('Live Weather Data Source from: ', 
+                           h5(class = "footer-note",'Live Weather Data Source from: ', 
                               a("OpenWeather",
                                 href="https://openweathermap.org"))
                          )
