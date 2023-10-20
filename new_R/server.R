@@ -1,4 +1,4 @@
-server <- function(input, output) {
+server <- function(input, output, session) {
   cafes_data$iconUrl <- sapply(cafes_data$industry_anzsic4_description, get_icon)
   
   output$map <- renderLeaflet({
@@ -289,5 +289,9 @@ server <- function(input, output) {
       hc_plotOptions(series = list(animation = list(duration = 2500))) %>%
       hc_colors("#80b1d3") %>%
       hc_add_theme(hc_theme)
+  })
+  
+  observeEvent(input$mainTabs, {
+    runjs('dispatchEvent(new Event("resize"))')
   })
 }

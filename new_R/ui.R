@@ -166,32 +166,32 @@ pedestrain_panel <- tabPanel("pedestrain",
 )
 
 ui <- dashboardPage(
-    title = "visit mel",       
-    header = headers,
-    sidebar = sidebar,
-    body = dashboardBody(
-      setUpTableauInShiny(),
-      tabItems(
-        tabItem("home",
-                intro_panel
-        ),
-        tabItem("poi",
-                poi_panel
-        ),
-        tabItem("weather",
-                weather_panel
-        ),
-        tabItem("pedestrain",
-                pedestrain_panel
-        ),
-        tabItem("tour",
-                tour_panel
-        ),
-        tabItem("faqs",
-                faqs_panel
-        )
+  title = "visit mel",       
+  header = headers,
+  sidebar = sidebar,
+  body = dashboardBody(
+    id = "mainTabs",
+    setUpTableauInShiny(),
+    tabItems(
+      tabItem("home",
+              pedestrain_panel #intro_panel
+      ),
+      tabItem("poi",
+              poi_panel
+      ),
+      tabItem("weather",
+              weather_panel
+      ),
+      tabItem("pedestrain",
+              pedestrain_panel
+      ),
+      tabItem("tour",
+              tour_panel
+      ),
+      tabItem("faqs",
+              faqs_panel
       )
     )
+  )
 )
-
 

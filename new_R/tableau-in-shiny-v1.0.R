@@ -40,43 +40,55 @@ setUpTableauInShiny <- function() {
   
   list(
     useShinyjs(),
-    HTML('<script type="module">
-      // Import all Tableau objects into the global namespace
-      import * as T from "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.js";
-      Object.assign(window, T);
-      
-      // Map a few common Tableau JS events to Shiny R events
-      window.observeTableauEvents = id => {
-        const viz = document.getElementById(id);
-        viz.addEventListener(TableauEventType.MarkSelectionChanged, async e => {
-          const marks = await e.detail.getMarksAsync();
-          const columnNames = marks.data[0].columns.map(col => col.fieldName);
-          const dataTable = marks.data[0].data.map(row => row.map(val => val.value));
-          const dataForShiny = dataTable.map(row => 
-            Object.fromEntries(columnNames.map((_, i) => [columnNames[i], row[i]])));
-          Shiny.setInputValue(id + "_mark_selection_changed:tinsdf", JSON.stringify(dataForShiny));
-        });
-        viz.addEventListener(TableauEventType.FilterChanged, async e => {
-          const filter = await e.detail.getFilterAsync();
-          Shiny.setInputValue(id + "_filter_changed", {
-            fieldName: e.detail.fieldName,
-            isAllSelected: filter.isAllSelected,
-            appliedValues: filter.appliedValues.map(app => app.value)
+    HTML('
+      <script type="module">
+        // Import all Tableau objects into the global namespace
+        import * as T from "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.js";
+        Object.assign(window, T);
+        
+        // Map a few common Tableau JS events to Shiny R events
+        window.observeTableauEvents = id => {
+          const viz = document.getElementById(id);
+          viz.addEventListener(TableauEventType.MarkSelectionChanged, async e => {
+            const marks = await e.detail.getMarksAsync();
+            const columnNames = marks.data[0].columns.map(col => col.fieldName);
+            const dataTable = marks.data[0].data.map(row => row.map(val => val.value));
+            const dataForShiny = dataTable.map(row => 
+              Object.fromEntries(columnNames.map((_, i) => [columnNames[i], row[i]])));
+            Shiny.setInputValue(id + "_mark_selection_changed:tinsdf", JSON.stringify(dataForShiny));
           });
-        });
-        viz.addEventListener(TableauEventType.ParameterChanged, async e => {
-          const param = await e.detail.getParameterAsync();
-          Shiny.setInputValue(id + "_parameter_changed", {
-            name: param.name,
-            fieldName: param.id,
-            value: param.currentValue.value
+          viz.addEventListener(TableauEventType.FilterChanged, async e => {
+            const filter = await e.detail.getFilterAsync();
+            Shiny.setInputValue(id + "_filter_changed", {
+              fieldName: e.detail.fieldName,
+              isAllSelected: filter.isAllSelected,
+              appliedValues: filter.appliedValues.map(app => app.value)
+            });
           });
+          viz.addEventListener(TableauEventType.ParameterChanged, async e => {
+            const param = await e.detail.getParameterAsync();
+            Shiny.setInputValue(id + "_parameter_changed", {
+              name: param.name,
+              fieldName: param.id,
+              value: param.currentValue.value
+            });
+          });
+          console.log("added events for", id)
+        };
+      </script>
+      <script>
+        $(document).on("shiny:inputchanged", function(event) {
+          if (event.name === "mainTabs") {
+            setTimeout(function() {
+              dispatchEvent(new Event("resize"));
+            }, 50);
+          }
         });
-        console.log("added events for", id)
-      };
-    </script>')
+      </script>
+    ')
   )
 }
+
 
 # For inserting a viz into the Shiny UI
 tableauPublicViz <- function(id, url, height="500px", style=NA, ...) {
