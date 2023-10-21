@@ -14,25 +14,22 @@ sidebar <- dashboardSidebar(
              tabName = "home",
              selected = T,
              icon = icon('thumbs-up')),
-    menuItem("Melbourne Dining and Accommodation",
+    menuItem("Dining and Accommodation",
              tabName = "poi",
              icon = icon('map-location-dot')),
-    menuItem("Melbourne Weather",
+    menuItem("Weather",
              tabName = "weather",
              icon = icon('sun')),
-    menuItem("Pedestrian Volume Monitor",
-             tabName = "pedestrain",
-             icon = icon("users")),
+    #menuItem("Pedestrian Volume Monitor",
+    #         tabName = "pedestrain",
+    #         selected = T,
+    #         icon = icon("users")),
     menuItem("Tourist Amenities",
              tabName = "tour",
              icon = icon('plane')),
     menuItem("FAQs",
              tabName = "faqs",
-             icon = icon("question")),
-    menuItem("Setting",
-             tabName = "setting",
-             icon = icon("gear"),
-             radioButtons("displaymode", "Display Mode", choices = c('Light Mode' = 'lightMode', 'Dark Mode' = 'darkMode'), selected="lightMode"))
+             icon = icon("question"))
   )
 )
 
@@ -43,6 +40,21 @@ intro_panel <- tabPanel(
     fluidRow(
       includeHTML("home.html"),
     ),
+    fluidRow(
+      column(12, 
+             tableauPublicViz(
+               id = "tableauviz1",
+               url = "https://public.tableau.com/views/Pedestrain_Map/1_1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+             )
+      )
+    ),
+    tags$hr(),
+    tags$h5(class = "footer-note",'Data Source from: ', 
+            a("CoM Open Data Portal - City of Melbourne",
+              href="https://data.melbourne.vic.gov.au/pages/home/")),
+    tags$h5(class = "footer-note",'Tableau map deposit: ', 
+            a("Xianrui Gao's Pedestrain_Map",
+              href="https://public.tableau.com/app/profile/xianrui.gao/viz/Pedestrain_Map/1_1"))
   )
 )
 
@@ -216,9 +228,9 @@ ui <- dashboardPage(
       tabItem("weather",
               weather_panel
       ),
-      tabItem("pedestrain",
-              pedestrain_panel
-      ),
+      #tabItem("pedestrain",
+      #        pedestrain_panel
+      #),
       tabItem("tour",
               tour_panel
       ),
