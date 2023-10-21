@@ -14,7 +14,7 @@ sidebar <- dashboardSidebar(
              tabName = "home",
              selected = T,
              icon = icon('thumbs-up')),
-    menuItem("Melbourne Points of Interest",
+    menuItem("Melbourne Dining and Accommodation",
              tabName = "poi",
              icon = icon('map-location-dot')),
     menuItem("Melbourne Weather",
@@ -58,7 +58,7 @@ faqs_panel <- tabPanel(
 
 poi_panel <- tabPanel("poi",
             fluidPage(
-              tags$h1(class = "shiny-title","Melbourne Points of Interest"),  # Add the title here
+              tags$h1(class = "shiny-title","Melbourne Dining and Accommodation"),  # Add the title here
               tags$hr(),
               tags$p(class = "shiny-p","Explore Melbourne with the Points of Interest Map. Discover cafes, restaurants, pubs, accommodation, and more. 
                      Filter your search and find your favorites with ease."),  # Add the description here        
@@ -208,7 +208,7 @@ ui <- dashboardPage(
     setUpTableauInShiny(),
     tabItems(
       tabItem("home",
-              pedestrain_panel #intro_panel
+              intro_panel
       ),
       tabItem("poi",
               poi_panel
@@ -217,7 +217,7 @@ ui <- dashboardPage(
               weather_panel
       ),
       tabItem("pedestrain",
-              intro_panel #pedestrain_panel
+              pedestrain_panel
       ),
       tabItem("tour",
               tour_panel
