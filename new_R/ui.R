@@ -72,9 +72,15 @@ poi_panel <- tabPanel("poi",
                       fluidPage(
                         tags$h1(class = "shiny-title","Melbourne Dining and Accommodation"),  # Add the title here
                         tags$hr(),
-                        tags$p(class = "shiny-p","Explore Melbourne with the Points of Interest Map. Discover cafes, restaurants, pubs, accommodation, and more. 
-                     Filter your search and find your favorites with ease."),  # Add the description here        
-                        
+                        tags$p(class = "shiny-p", 
+                               "🍵 Discover cafes, restaurants, pubs, and more! Filter your search and find your favorites with ease.", 
+                               br(), 
+                               "🍹 Dive into the vibrant culinary and hospitality scene of Melbourne with our comprehensive map. From world-class restaurants to cozy cafes and iconic bars - we've got it all.", 
+                               br(),
+                               "🌮 Whether you're craving delectable cuisine, seeking a quick coffee stop, or hunting for a comfortable place to stay, this guide is your perfect companion.", 
+                               br(), 
+                               "🌇 Immerse yourself in the inviting atmosphere of Melbourne's dining and accommodation offerings, ensuring a memorable visit to this bustling city."
+                        ),
                         sidebarLayout(
                           sidebarPanel(
                             h3("Search "),
@@ -105,9 +111,15 @@ tour_panel <- tabPanel("tour",
                        fluidPage(
                          tags$h1(class = "shiny-title","Tourist Amenities Map"),  # Add the title here
                          tags$hr(),
-                         tags$p(class = "shiny-p","Discover essential tourist amenities at your fingertips with our Tourist Amenities Map. Find Wi-Fi hotspots, tram stops, bus stops, 
-                    and more to make your visit to Melbourne convenient and enjoyable. Plan your journey and explore the city with ease, thanks to this handy map."),  # Add the description here        
-                         
+                         tags$p(class = "shiny-p", 
+                                "🚊️ Discover essential tourist amenities at your fingertips with our Tourist Amenities Map. ",
+                                br(),
+                                "📶 Find Wi-Fi hotspots, bike share, tram and bus stops, and more to make your visit to Melbourne convenient and enjoyable.",
+                                br(),
+                                "🚌 Melbourne's essential facilities and services are carefully designed to enhance the tourism experience. ",
+                                br(),
+                                "🚴 These amenities are thoughtfully placed to make it easier for tourists to explore the city, access transportation, and stay connected."
+                         ),
                          sidebarLayout(
                            sidebarPanel(
                              h3("Filter Local Facilities"),
@@ -149,10 +161,15 @@ weather_panel <- tabItem("weather",
                            #               "<br>", 
                            #              format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"))),
                            #    align = "center"),
-                           h1(class = "shiny-title","Today Weather of Melbourne"),
+                           h1(class = "shiny-title","Today's Weather of Melbourne"),
                            hr(),
-                           p(class = "shiny-p", HTML(paste("Today is",format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"), 
-                                                           ". Melbourne's weather is known for its unpredictability, so it's a good idea to be prepared for all seasons in a single day." ))),
+                           p(class = "shiny-p", 
+                             HTML(paste("📅 Today is <strong>", format(as_datetime(current_weather$dt, tz = "Australia/Melbourne"), "%b %d %Y, %A"), "</strong>.",
+                                        "<br>☀️ Melbourne's weather is known for its unpredictability, so it's a good idea to be prepared for all seasons in a single day.",
+                                        "<br>🌸 Melbourne experiences four seasons: blooming spring, warm summer, mild autumn, and cool winter, offering a diverse range of weather experiences throughout the year.")
+                             )
+                           )
+                           ,
                            hr(),
                            # Value box
                            fluidRow(
@@ -170,7 +187,7 @@ weather_panel <- tabItem("weather",
                            hr(),
                            h1(class = "shiny-title","Weather Forecast of Melbourne"), 
                            hr(),
-                           p(class = "shiny-p","access a 5-day weather forecast for Melbourne, offering key information on wind speed, weather conditions, humidity levels, and precipitation forecasts."),
+                           p(class = "shiny-p","⛅ Access a 5-day weather forecast for Melbourne, offering key information on wind speed, weather conditions, humidity levels, and precipitation forecasts."),
                            hr(),
                            fluidRow(
                              column(6, highchartOutput("weather_forecast", height = 300)),
@@ -227,7 +244,7 @@ pedestrain_panel <- tabPanel("pedestrain",
 )
 
 ui <- dashboardPage(
-  title = "visit mel",       
+  title = "Melbourne Vacation Planner",       
   header = headers,
   sidebar = sidebar,
   body = dashboardBody(

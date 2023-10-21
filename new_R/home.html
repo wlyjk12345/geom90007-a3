@@ -42,16 +42,21 @@
 
 </head>
 
+<body>
+    <h1>Melbourne Vacation Planner</h1>
+    <hr> <!-- Add a horizontal line -->
+</body>
+
 <!-- Carousel
 ================================================== -->
 <body>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
+    </ol>
       <div class="carousel-inner">
         <!-- First Slider -->
         <div class="item">
@@ -59,9 +64,9 @@
           <div class="container">
             <div class="carousel-caption">
               <h1 class="fit-head" style="color:white">Discover Melbourne's Cafés and Restaurant</h1>
-              <p class="fit-text" style="color:white">There's something new around every corner.</p>
+              <p class="fit-text" style="color:white">From cozy coffee shops to gourmet dining experiences, delve into Melbourne's foodie delights.</p>
               <p>
-                <a class="btn btn-lg btn-primary" onclick="$('li:eq(0) a').tab('show');" role="button">Explore now &raquo;</a>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(1) a').tab('show');" role="button">Explore now &raquo;</a>
               </p>
             </div>
           </div>
@@ -71,10 +76,10 @@
           <img src="images/weather.jpg" alt="2">
           <div class="container">
             <div class="carousel-caption">
-              <h1 class="fit-head" style="color:white">Exploring Melbourne</h1>
-              <p class="fit-text" style="color:white">From vintage cafe to luxury malls, Melbourne has a dream space for everyone.</p>
+              <h1 class="fit-head" style="color:white">Melbourne's Weather</h1>
+              <p class="fit-text" style="color:white">Dive into today's weather and uncover the forecast for your next adventure.</p>
               <p>
-                <a class="btn btn-lg btn-primary" onclick="$('li:eq(1) a').tab('show');" role="button">Explore now &raquo;</a>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(2) a').tab('show');" role="button">Explore now &raquo;</a>
               </p>
             </div>
           </div>
@@ -84,10 +89,10 @@
           <img src="images/transport.jpg" alt="3"> 
           <div class="container">
             <div class="carousel-caption">
-              <h1 class="fit-head" style="color:white">Your Third Slider Title</h1>
-              <p class="fit-text" style="color:white">Your Third Slider Description.</p>
+              <h1 class="fit-head" style="color:white">Find Amenities</h1>
+              <p class="fit-text" style="color:white">Wi-Fi hotspots, bike share, tram and bus stops, we aim to make your travel easier.</p>
               <p>
-                <a class="btn btn-lg btn-primary" onclick="$('li:eq(2) a').tab('show');" role="button">Explore now &raquo;</a>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(3) a').tab('show');" role="button">Explore now &raquo;</a>
               </p>
             </div>
           </div>
@@ -102,38 +107,28 @@
 
 
 <body>
-    <h1>Melbourne Vacation Planner</h1>
-    <hr> <!-- Add a horizontal line -->
-
-    <div class="section">
-        <h2>Dining and Accommodation<sub onclick="switchToPoiTab()" style="color: blue;">Go to Dining and Accommodation</sub></h2>
-        <p>
-            Explore the vibrant culinary and hospitality scene of Melbourne with our comprehensive map. Discover an array of dining options, from world-class restaurants to cozy cafes, and iconic bars where you can unwind. Whether you're looking for delectable cuisine, a quick coffee stop, or a comfortable place to stay, this map has you covered. Immerse yourself in the diverse and inviting atmosphere of Melbourne's dining and accommodation choices, and make the most of your visit to this bustling city.
-        </p>
-        <hr> <!-- Add a horizontal line -->
-    </div>
     
-    <div class="section">
+    <!-- <div class="section">
         <h2>Weather<sub onclick="switchToWeatherTab()" style="color: blue;">Go to Melbourne Weather</sub></h2>
         <p>
             Melbourne experiences four seasons, with warm summers, mild autumns, cool winters, and blooming springs, offering a wide range of weather experiences throughout the year.
         </p>
-        <hr> <!-- Add a horizontal line -->
-    </div>    
+        <hr> 
+    </div>     -->
     
 
-    <div class="section">
+    <!-- <div class="section">
         <h2>Tourist Amenities in Melbourne<sub onclick="switchToAmenitiesTab()" style="color: blue;">Go to Tourist Amenities in Melbourne</sub></h2>
         <p>
             Melbourne's essential facilities and services carefully designed to enhance the tourism experience. These include Wi-Fi hotspots, tram and bus stops, bike share docks, and convenient routes. These amenities are thoughtfully placed to make it easier for tourists to explore the city, access transportation, and stay connected, contributing to a more enjoyable and convenient visit to Melbourne.
         </p>
-        <hr> <!-- Add a horizontal line -->
-    </div>
+        <hr> 
+    </div> -->
 
     <div class="section">
-        <h2>Pedestrian Density</h2>
+        <h2>Explore the Pedestrian Density</h2>
         <p>
-            Melbourne's Pedestrian Density reflects the city's lively and inviting atmosphere. It's a measurement of foot traffic, highlighting the areas where people gather, stroll, and enjoy the urban landscape. With this data, you can explore the most vibrant streets, popular walkways, and bustling neighborhoods. Whether you're a local or a visitor, understanding the Pedestrian Density in Melbourne provides valuable insights for planning your city adventures, finding hidden gems, and immersing yourself in the energetic pulse of this metropolis
+            Melbourne's Pedestrian Density reflects the city's lively and inviting atmosphere. It's a measurement of foot traffic, highlighting the areas where people gather, stroll, and enjoy the urban landscape. With this data, you can explore the most vibrant streets, popular walkways, and bustling neighborhoods. Whether you're a local or a visitor, understanding the Pedestrian Density in Melbourne provides valuable insights for planning your city adventures, finding hidden gems, and immersing yourself in the energetic pulse of this metropolis.
         </p>
         <hr> <!-- Add a horizontal line -->
     </div>
