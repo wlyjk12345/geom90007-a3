@@ -42,9 +42,32 @@ intro_panel <- tabPanel(
   fluidPage(
     fluidRow(
       includeHTML("home.html"),
-    ),
+      
+      tags$h1(class = "shiny-title","Pedestrian Density Map"),  # Add the title here
+      tags$hr(),
+      tags$p(class = "shiny-p","Explore Melbourne's lively foot traffic with our Pedestrian Density Map. 
+             Uncover popular streets and bustling walkways, perfect for strolling through iconic neighborhoods. Gain valuable insights into the city's vibrant, walkable environment and discover Melbourne on foot with ease."),  # Add the description here
+      
+      fluidRow(
+        column(12, 
+               tableauPublicViz(
+                 id = "tableauviz1",
+                 url = "https://public.tableau.com/views/Pedestrain_Map/1_1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+               )
+        )
+      ),
+      
+      tags$hr(),
+      tags$h5(class = "footer-note",'Data Source from: ', 
+              a("CoM Open Data Portal - City of Melbourne",
+                href="https://data.melbourne.vic.gov.au/pages/home/")),
+      tags$h5(class = "footer-note",'Tableau map deposit: ', 
+              a("Xianrui Gao's Pedestrain_Map",
+                href="https://public.tableau.com/app/profile/xianrui.gao/viz/Pedestrain_Map/1_1"))
+    )
   )
 )
+
 
 faqs_panel <- tabPanel(
   title = "faqs",
@@ -208,7 +231,7 @@ ui <- dashboardPage(
     setUpTableauInShiny(),
     tabItems(
       tabItem("home",
-              pedestrain_panel #intro_panel
+              intro_panel
       ),
       tabItem("poi",
               poi_panel
