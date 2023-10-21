@@ -91,7 +91,7 @@ setUpTableauInShiny <- function() {
 
 
 # For inserting a viz into the Shiny UI
-tableauPublicViz <- function(id, url, height="500px", style=NA, ...) {
+tableauPublicViz <- function(id, url, height="580px", style=NA, ...) {
   list(
     tag('tableau-viz', list(id=id,
                             src=url,
