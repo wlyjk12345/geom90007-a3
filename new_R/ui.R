@@ -270,7 +270,51 @@ ui <- dashboardPage(
               faqs_panel
       )
     )
+      ,
+      # Also add some custom CSS to make the title background area the same
+      # color as the rest of the header.
+      tags$head(tags$style(HTML('
+        /* logo */
+        .skin-blue .main-header .logo {
+                              background-color: #fff;
+                              }
+
+        /* logo when hovered */
+        .skin-blue .main-header .logo:hover {
+                              background-color: #fff;
+                              }
+
+        /* navbar (rest of the header) */
+        .skin-blue .main-header .navbar {
+                              background-color: #fff;
+                              }        
+
+        /* main sidebar */
+        .skin-blue .main-sidebar {
+                              background-color: #fff;
+                              }
+
+        /* active selected tab in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+                              background-color: #bcbcbc;
+                              }
+
+        /* other links in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+                              background-color: #fff;
+                              color: #000000;
+                              }
+
+        /* other links in the sidebarmenu when hovered */
+         .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+                              background-color: #fff;
+                              }
+        /* toggle button when hovered  */                    
+         .skin-blue .main-header .navbar .sidebar-toggle:hover{
+                              background-color: #fff;
+                              }
+                              ')))
+    )
   )
-)
 
 
