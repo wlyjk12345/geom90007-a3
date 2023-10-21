@@ -2,29 +2,61 @@
 <head>
     <title>Melbourne Vacation Planner</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <script>
+        function switchToWeatherTab() {
+          // Use jQuery to trigger the click event on the "Weather" tab link
+          $('.sidebar-menu a[data-value="weather"]').click();
+        }
+      </script>
+      <script>
+        function switchToPoiTab() {
+          // Use jQuery to trigger the click event on the "Weather" tab link
+          $('.sidebar-menu a[data-value="poi"]').click();
+        }
+      </script>
+    <script>
+        function switchToAmenitiesTab() {
+        // Use jQuery to trigger the click event on the "Weather" tab link
+        $('.sidebar-menu a[data-value="tour"]').click();
+        }
+    </script>
+
+
 </head>
 <body>
-    <h2 class="mdl-card__title-text">Places to Visit</h2>
-    <p>
-        Melbourne is a city filled with iconic landmarks like Federation Square, cultural gems such as the National Gallery of Victoria, and diverse neighborhoods. Visitors can explore historic markets, lush green spaces, and unique street art-adorned laneways.
-    </p>
+    <h1>Melbourne Vacation Planner</h1>
     <hr> <!-- Add a horizontal line -->
 
-    <h2 class="mdl-card__title-text">Weather</h2>
-    <p>
-        Melbourne experiences four seasons, with warm summers, mild autumns, cool winters, and blooming springs, offering a wide range of weather experiences throughout the year.
-    </p>
-    <hr> <!-- Add a horizontal line -->
+    <div class="section">
+        <h2>Places to Visit<sub onclick="switchToPoiTab()" style="color: blue;">Go to Melbourne Points of Interest</sub></h2>
+        <p>
+            Explore the vibrant culinary and hospitality scene of Melbourne with our comprehensive map. Discover an array of dining options, from world-class restaurants to cozy cafes, and iconic bars where you can unwind. Whether you're looking for delectable cuisine, a quick coffee stop, or a comfortable place to stay, this map has you covered. Immerse yourself in the diverse and inviting atmosphere of Melbourne's dining and accommodation choices, and make the most of your visit to this bustling city.
+        </p>
+        <hr> <!-- Add a horizontal line -->
+    </div>
+    
+    <div class="section">
+        <h2>Weather<sub onclick="switchToWeatherTab()" style="color: blue;">Go to Melbourne Weather</sub></h2>
+        <p>
+            Melbourne experiences four seasons, with warm summers, mild autumns, cool winters, and blooming springs, offering a wide range of weather experiences throughout the year.
+        </p>
+        <hr> <!-- Add a horizontal line -->
+    </div>    
+    
 
-    <h2 class="mdl-card__title-text">Tourism Industry</h2>
-    <p>
-        Tourism thrives in Melbourne due to its vibrant cultural scene, diverse culinary options, and numerous events and festivals. Iconic events like the Australian Open and a rich café culture significantly contribute to the local economy.
-    </p>
-    <hr> <!-- Add a horizontal line -->
+    <div class="section">
+        <h2>Tourist Amenities in Melbourne<sub onclick="switchToAmenitiesTab()" style="color: blue;">Go to Tourist Amenities in Melbourne</sub></h2>
+        <p>
+            Melbourne's essential facilities and services carefully designed to enhance the tourism experience. These include Wi-Fi hotspots, tram and bus stops, bike share docks, and convenient routes. These amenities are thoughtfully placed to make it easier for tourists to explore the city, access transportation, and stay connected, contributing to a more enjoyable and convenient visit to Melbourne.
+        </p>
+        <hr> <!-- Add a horizontal line -->
+    </div>
 
-    <h2 class="mdl-card__title-text">Pedestrian Culture</h2>
-    <p>
-        Melbourne is renowned for its walker-friendly environment, featuring wide sidewalks, extensive laneways, dedicated bike lanes, and pedestrian zones. The city hosts pedestrian-friendly events, making it a delightful place for exploration on foot or by bike.
-    </p>
+    <div class="section">
+        <h2>Pedestrian Density</h2>
+        <p>
+            Melbourne's Pedestrian Density reflects the city's lively and inviting atmosphere. It's a measurement of foot traffic, highlighting the areas where people gather, stroll, and enjoy the urban landscape. With this data, you can explore the most vibrant streets, popular walkways, and bustling neighborhoods. Whether you're a local or a visitor, understanding the Pedestrian Density in Melbourne provides valuable insights for planning your city adventures, finding hidden gems, and immersing yourself in the energetic pulse of this metropolis
+        </p>
+        <hr> <!-- Add a horizontal line -->
+    </div>
 </body>
-

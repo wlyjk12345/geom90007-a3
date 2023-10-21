@@ -2,27 +2,26 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
+    padding: 5px;
 }
 h1 {
     font-size: 24px;
     color: #333;
     font-weight: bold;
-    margin-left: 20px;
+    margin-left: 35px;
 }
 h2 {
     font-size: 20px;
     color: #333;
-    margin-left: 20px;
+    margin-left: 35px;
 }
 p {
     font-size: 16px;
     color: #555;
-    margin-left: 20px;
+    margin-left: 35px;
 }
 hr {
-    margin: 20px 0;
+    margin: 10px 0;
     border: none;
     border-top: 1px solid #ccc;
 }
@@ -55,7 +54,8 @@ hr {
 .footer-note {
     font-size: 14px; /* Set the font size */
     color: #666; /* Set the text color to gray */
-    margin-top: 20px; /* Add top margin to increase spacing from the content above */
+    margin-top: 10px; /* Add top margin to increase spacing from the content above */
     margin-left: 20px;
     /* You can add other styles as needed */
 }
+
