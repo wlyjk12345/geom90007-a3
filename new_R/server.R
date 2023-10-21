@@ -111,8 +111,10 @@ server <- function(input, output, session) {
   ################For Weather#######################
   output$cur_temp <- renderValueBox(
     valueBox(
-      value = tags$p(paste(round(current_weather$main$temp), "ºC"), style = "font-size: 85%;"), 
-      subtitle = paste("Currently feels like", round(current_weather$main$feels_like), "ºC"),
+      value = tags$p(paste(round(current_weather$main$temp), "ºC"), style = "font-size: 85%; color: white;"), 
+      subtitle = HTML(paste('<span style="color: white; font-size: 18px;">Temperature ranges from ', 
+                            round(current_weather$main$temp_min), 'ºC to ',
+                            round(current_weather$main$temp_max), 'ºC</span>')),
       icon = fa_i("fas fa-temperature-three-quarters"), 
       color = "aqua"
     )
@@ -122,9 +124,10 @@ server <- function(input, output, session) {
     valueBox(
       value = tags$p(paste(round(current_weather$main$temp_min), "ºC -", 
                            round(current_weather$main$temp_max), "ºC"), 
-                     style = "font-size: 85%;"),
-      subtitle = paste("Temperature ranges from ", round(current_weather$main$temp_min), "ºC to ",
-                       round(current_weather$main$temp_max), "ºC"),
+                     style = "font-size: 85%; color: white;"),
+      subtitle = HTML(paste('<span style="color: white; font-size: 18px;">Temperature ranges from ', 
+                            round(current_weather$main$temp_min), 'ºC to ',
+                            round(current_weather$main$temp_max), 'ºC</span>')),
       icon = fa_i("fas fa-temperature-arrow-up"), 
       color = "yellow"
     )
@@ -135,8 +138,8 @@ server <- function(input, output, session) {
     total_rain_5hrs <- sum(next_5hrs$rain, na.rm = TRUE)
     
     valueBox(
-      value = tags$p(paste(total_rain_5hrs, "mm"), style = "font-size: 85%;"),
-      subtitle = "Rainfall in the next 5 hours",
+      value = tags$p(paste(total_rain_5hrs, "mm"), style = "font-size: 85%; color: white;"),
+      subtitle = HTML('<span style="color: white; font-size: 18px;">Rainfall in the next 5 hours</span>'),
       icon = fa_i("fas fa-cloud-rain"),
       color = "blue"
     )
@@ -160,8 +163,8 @@ server <- function(input, output, session) {
     
     valueBox(
       value = tags$p(str_to_title(current_weather$weather$description), 
-                     style = "font-size: 85%;"), 
-      subtitle = "Current weather condition",
+                     style = "font-size: 85%; color: white;"), 
+      subtitle = HTML('<span style="color: white; font-size: 18px;">Current weather condition</span>'),
       icon = fa_i(weather_icon), color = "teal"
     )
   })
@@ -171,8 +174,8 @@ server <- function(input, output, session) {
     valueBox(
       value = tags$p(substr(
         as_datetime(current_weather$sys$sunset, 
-                    tz = "Australia/Melbourne"), 12, 16), style = "font-size: 85%;"), 
-      subtitle = "Expected Sunset Time",
+                    tz = "Australia/Melbourne"), 12, 16), style = "font-size: 85%; color: white;"), 
+      subtitle = HTML('<span style="color: white; font-size: 18px;">Expected Sunset Time</span>'),
       icon = tags$i(class = "fas fa-moon"), color = "purple"
     )
   )
@@ -181,8 +184,8 @@ server <- function(input, output, session) {
     valueBox(
       value = tags$p(substr(as_datetime(current_weather$sys$sunrise, 
                                         tz = "Australia/Melbourne"), 12, 16), 
-                     style = "font-size: 85%;"),
-      subtitle = "Expected Sunrise Time",
+                     style = "font-size: 85%; color: white;"),
+      subtitle = HTML('<span style="color: white; font-size: 18px;">Expected Sunrise Time</span>'),
       icon = fa_i("fas fa-sun"),
       color = "orange"
     )
