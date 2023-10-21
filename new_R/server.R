@@ -193,11 +193,7 @@ server <- function(input, output, session) {
   
   
   output$weather_forecast <- renderHighchart({
-    if (input$displaymode == "lightMode"){
-      hc_theme = hc_theme_smpl()
-    } else{
-      hc_theme = hc_theme_db()
-    }
+    hc_theme = hc_theme_smpl()
     forecast_df$tmstmp <- datetime_to_timestamp(forecast_df$tmstmp)
     
     forecast_df %>%
@@ -218,11 +214,7 @@ server <- function(input, output, session) {
   })
   
   output$precipitation_forecast <- renderHighchart({
-    if (input$displaymode == "lightMode"){
-      hc_theme = hc_theme_smpl()
-    } else{
-      hc_theme = hc_theme_db()
-    }
+    hc_theme = hc_theme_smpl()
     forecast_df$tmstmp <- datetime_to_timestamp(forecast_df$tmstmp)
     
     forecast_df %>%
@@ -247,11 +239,7 @@ server <- function(input, output, session) {
   
   
   output$wind_speed_forecast <- renderHighchart({
-    if (input$displaymode == "lightMode"){
-      hc_theme = hc_theme_smpl()
-    } else{
-      hc_theme = hc_theme_db()
-    }
+    hc_theme = hc_theme_smpl()
     forecast_df$tmstmp <- datetime_to_timestamp(forecast_df$tmstmp)
     
     forecast_df %>%
@@ -271,11 +259,7 @@ server <- function(input, output, session) {
   })
   
   output$humidity_forecast <- renderHighchart({
-    if (input$displaymode == "lightMode"){
-      hc_theme = hc_theme_smpl()
-    } else{
-      hc_theme = hc_theme_db()
-    }
+    hc_theme = hc_theme_smpl()
     forecast_df$tmstmp <- datetime_to_timestamp(forecast_df$tmstmp)
     
     forecast_df %>%

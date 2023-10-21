@@ -21,8 +21,86 @@
         }
     </script>
 
+    <style>
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: transparent;
+        }
+
+        .carousel-caption:hover {
+            color: white;
+        }
+
+        .carousel-caption a {
+            visibility: visible;
+        }
+
+        .carousel-caption:hover a {
+            visibility: visible;
+        }
+    </style>
 
 </head>
+
+<!-- Carousel
+================================================== -->
+<body>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <!-- First Slider -->
+        <div class="item">
+          <img src="images/restaurant.jpg" alt="1">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="fit-head" style="color:white">Discover Melbourne's Cafés and Restaurant</h1>
+              <p class="fit-text" style="color:white">There's something new around every corner.</p>
+              <p>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(0) a').tab('show');" role="button">Explore now &raquo;</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Second Slider -->
+        <div class="item">
+          <img src="images/weather.jpg" alt="2">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="fit-head" style="color:white">Exploring Melbourne</h1>
+              <p class="fit-text" style="color:white">From vintage cafe to luxury malls, Melbourne has a dream space for everyone.</p>
+              <p>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(1) a').tab('show');" role="button">Explore now &raquo;</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Third Slider -->
+        <div class="item  active">
+          <img src="images/transport.jpg" alt="3"> 
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="fit-head" style="color:white">Your Third Slider Title</h1>
+              <p class="fit-text" style="color:white">Your Third Slider Description.</p>
+              <p>
+                <a class="btn btn-lg btn-primary" onclick="$('li:eq(2) a').tab('show');" role="button">Explore now &raquo;</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <!-- /.carousel -->
+</body>
+
+
 <body>
     <h1>Melbourne Vacation Planner</h1>
     <hr> <!-- Add a horizontal line -->
