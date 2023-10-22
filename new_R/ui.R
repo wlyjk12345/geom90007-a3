@@ -311,7 +311,7 @@ ui <- dashboardPage(
       "
                                  /* App window sizing*/
                                  body{
-                                 min-width: 900;
+                                 min-width: 900px;
                                  margin: auto;
                                  overflow: auto;
                                  }
