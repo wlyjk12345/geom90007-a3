@@ -95,13 +95,13 @@ server <- function(input, output, session) {
     leafletProxy("newTabMap") %>% clearMarkers()
     leafletProxy("newTabMap") %>% clearShapes()
     
-    if ("WiFi" %in% input$newTabFilter) {
+    if ("VicFreeWiFi" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
                    icon = ~wifi_icon, popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Long Name:</strong>", Long.Name, "<br><strong>Type:</strong>", Type, "<br><strong>Status:</strong>", Status))
     }
     
-    if ("Tram Stops" %in% input$newTabFilter) {
+    if ("City Circle Tram Stops" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = tram_stops, ~Longitude, ~Latitude, 
                    icon = ~tram_icon, popup = ~paste("<strong>Name:</strong>", name, "<br>", "<strong>Stop Number:</strong>", stop_no))
@@ -118,7 +118,7 @@ server <- function(input, output, session) {
         addMarkers(data = bike_share_dock, ~lon, ~lat, 
                    icon = ~bike_icon, popup = ~paste("<strong>Name:</strong>", name, "<br><strong>Capacity:</strong>", capacity))
     }
-    if ("Routes" %in% input$newTabFilter) {
+    if ("City Circle Routes" %in% input$newTabFilter) {
         leafletProxy("newTabMap") %>%
             addPolylines(data = coordinates_df, 
                          lng = ~lon, lat = ~lat, 

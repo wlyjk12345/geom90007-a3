@@ -157,14 +157,14 @@ tour_panel <- tabPanel("tour",
                            sidebarPanel(
                              h3("Filter Local Facilities"),
                              checkboxGroupInput("newTabFilter", "Filter by type:",
-                                                choices = c("WiFi", "Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "Routes"),
-                                                selected = c("WiFi", "Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "Routes")),
+                                                choices = c("VicFreeWiFi", "City Circle Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "City Circle Routes"),
+                                                selected = c("VicFreeWiFi", "City Circle Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "City Circle Routes")),
                              helpText("Filter the local facilities shown on the map."),
                              
                              # Add links with the shiny-p class
                              hr(),
                              tags$a(
-                               HTML('<img src="images/wifi.png" style="width: 20px; height: 20px;"> WiFi'),
+                               HTML('<img src="images/wifi.png" style="width: 20px; height: 20px;"> VicFreeWiFi'),
                                href = "https://www.visitvictoria.com/practical-information/wifi-hotspots",
                                class = "shiny-p"
                              ),
@@ -188,7 +188,7 @@ tour_panel <- tabPanel("tour",
                              ),
                              hr(),
                              tags$a(
-                               HTML('<img src="images/icone-trait-bleu.png" style="width: 20px; height: 20px;">    Routes'),
+                               HTML('<img src="images/icone-trait-bleu.png" style="width: 20px; height: 20px;">    City Circle Routes'),
                                href = "https://www.ptv.vic.gov.au/more/maps/",
                                class = "shiny-p"
                              )
