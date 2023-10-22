@@ -107,7 +107,7 @@ server <- function(input, output, session) {
                    icon = ~tram_icon, popup = ~paste("<strong>Name:</strong>", name, "<br>", "<strong>Stop Number:</strong>", stop_no))
     }
     
-    if ("Bus Stops" %in% input$newTabFilter) {
+    if ("Visitor Shuttle Bus Stops" %in% input$newTabFilter) {
       leafletProxy("newTabMap") %>%
         addMarkers(data = bus_stops, ~Longitude, ~Latitude, 
                    icon = ~bus_icon, popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Stop Number:</strong>", Stop.Number, "<br><strong>Address:</strong>", Address))
