@@ -1,7 +1,7 @@
 source("helper.R")
 # A dashboard header with 3 dropdown menus
 headers <- dashboardHeader(
-  title = tags$a(tags$img(src='https://bit.ly/3rFI94P',
+  title = tags$a(tags$img(src='https://bit.ly/3rFI94P',  
                           height='55', width='160')),
   titleWidth = 250
 )

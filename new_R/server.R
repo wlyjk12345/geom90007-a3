@@ -111,12 +111,12 @@ server <- function(input, output, session) {
   ################For Weather#######################
   output$cur_temp <- renderValueBox(
     valueBox(
-      value = tags$p(paste(round(current_weather$main$temp), "ºC"), style = "font-size: 85%; color: white;"), 
-      subtitle = HTML(paste('<span style="color: white; font-size: 18px;">Temperature ranges from ', 
-                            round(current_weather$main$temp_min), 'ºC to ',
-                            round(current_weather$main$temp_max), 'ºC</span>')),
-      icon = fa_i("fas fa-temperature-three-quarters"), 
-      color = "aqua"
+      value = tags$p(paste(round(current_weather$main$temp), "ºC"), 
+                     style = "font-size: 85%; color: white;"), 
+      subtitle = HTML(paste('<span style="color: white; font-size: 18px;">Temperature feels like ', 
+                            round(current_weather$main$feels_like), 'ºC</span>')),
+      icon = icon("temperature-three-quarters"),  # Use icon() from shiny
+      color = "yellow"  # 
     )
   )
   
@@ -129,7 +129,7 @@ server <- function(input, output, session) {
                             round(current_weather$main$temp_min), 'ºC to ',
                             round(current_weather$main$temp_max), 'ºC</span>')),
       icon = fa_i("fas fa-temperature-arrow-up"), 
-      color = "yellow"
+      color = "orange"
     )
   )
   
@@ -146,26 +146,35 @@ server <- function(input, output, session) {
   })
   
   output$current_condition <- renderValueBox({
-    # Example decision for icons based on weather description
-    weather_icon <- switch(
-      str_to_lower(current_weather$weather$description),
-      "clear sky" = "fas fa-sun",
-      "few clouds" = "fas fa-cloud-sun",
-      "scattered clouds" = "fas fa-cloud",
-      "broken clouds" = "fas fa-cloud-meatball",
-      "shower rain" = "fas fa-cloud-showers-heavy",
-      "rain" = "fas fa-cloud-rain",
-      "thunderstorm" = "fas fa-bolt",
-      "snow" = "fas fa-snowflake",
-      "mist" = "fas fa-smog",
-      "fas fa-question"  # Default icon for other conditions
-    )
+    
+    # Use only the first weather description
+    weather_description <- str_to_lower(current_weather$weather$description[1])
+    
+    # Match the icon based on the weather description
+    if (grepl("shower rain", weather_description)) {
+      weather_icon <- "fas fa-cloud-showers-heavy"
+    } else if (grepl("rain", weather_description) || grepl("drizzle", weather_description)) {
+      weather_icon <- "fas fa-cloud-rain"
+    } else {
+      weather_icon <- switch(
+        weather_description,
+        "clear sky" = "fas fa-sun",
+        "few clouds" = "fas fa-cloud-sun",
+        "scattered clouds" = "fas fa-cloud",
+        "broken clouds" = "fas fa-cloud-meatball",
+        "thunderstorm" = "fas fa-bolt",
+        "snow" = "fas fa-snowflake",
+        "mist" = "fas fa-smog",
+        "fas fa-question"  # Default icon for other conditions
+      )
+    }
     
     valueBox(
-      value = tags$p(str_to_title(current_weather$weather$description), 
+      value = tags$p(str_to_title(weather_description), 
                      style = "font-size: 85%; color: white;"), 
       subtitle = HTML('<span style="color: white; font-size: 18px;">Current weather condition</span>'),
-      icon = fa_i(weather_icon), color = "teal"
+      icon = icon(weather_icon),  
+      color = "teal"
     )
   })
   
@@ -187,7 +196,7 @@ server <- function(input, output, session) {
                      style = "font-size: 85%; color: white;"),
       subtitle = HTML('<span style="color: white; font-size: 18px;">Expected Sunrise Time</span>'),
       icon = fa_i("fas fa-sun"),
-      color = "orange"
+      color = "maroon"
     )
   })
   

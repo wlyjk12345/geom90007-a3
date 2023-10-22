@@ -7,6 +7,7 @@ current_weather <- get_current("Melbourne, AU", units = "metric")
 rain_measure <- ifelse(is.null(current_weather$rain$`5h`), 0, current_weather$rain$`5h`)
 
 forecast_data <- get_forecast("Melbourne, AU", units = "metric")
+
 forecast_df <- data.frame(
   tmstmp =  forecast_data$list$dt_txt,
   temp = forecast_data$list$main.temp,
