@@ -159,7 +159,7 @@ tour_panel <- tabPanel("tour",
                              checkboxGroupInput("newTabFilter", "Filter by type:",
                                                 choices = c("VicFreeWiFi", "City Circle Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "City Circle Routes"),
                                                 selected = c("VicFreeWiFi", "City Circle Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "City Circle Routes")),
-                             helpText("Filter the local facilities shown on the map."),
+                             helpText("Click below for more information on the local facilities shown on the map."),
                              
                              # Add links with the shiny-p class
                              hr(),
