@@ -299,9 +299,25 @@ ui <- dashboardPage(
   title = "Melbourne Vacation Planner",       
   header = headers,
   sidebar = sidebar,
+  skin = "black",
   body = dashboardBody(
     id = "mainTabs",
     setUpTableauInShiny(),
+    tags$head(tags$style(HTML(
+      
+      ####################################################
+      #####TRYING CSS TO FIX WINDOW SIZING HERE###########
+      ####################################################
+      "
+                                 /* App window sizing*/
+                                 body{
+                                 min-width: 600px;
+                                 margin: auto;
+                                 overflow: auto;
+                                 }
+                                "
+      
+    ))),
     tabItems(
       tabItem("home",
               intro_panel
@@ -327,42 +343,47 @@ ui <- dashboardPage(
       # color as the rest of the header.
       tags$head(tags$style(HTML('
         /* logo */
-        .skin-blue .main-header .logo {
+        .skin-black .main-header .logo {
                               background-color: #fff;
                               }
 
         /* logo when hovered */
-        .skin-blue .main-header .logo:hover {
+        .skin-black .main-header .logo:hover {
                               background-color: #fff;
-                              }
+        }
+        /* Navigation toggle button icon */
+        .navbar-toggle i, .navbar-toggle span {
+            color: #000000; /* Change to black */
+        }
+
 
         /* navbar (rest of the header) */
-        .skin-blue .main-header .navbar {
+        .skin-black .main-header .navbar {
                               background-color: #fff;
                               }        
 
         /* main sidebar */
-        .skin-blue .main-sidebar {
+        .skin-black .main-sidebar {
                               background-color: #fff;
                               }
 
         /* active selected tab in the sidebarmenu */
-        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+        .skin-black .main-sidebar .sidebar .sidebar-menu .active a{
                               background-color: #bcbcbc;
                               }
 
         /* other links in the sidebarmenu */
-        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+        .skin-black .main-sidebar .sidebar .sidebar-menu a{
                               background-color: #fff;
                               color: #000000;
                               }
 
         /* other links in the sidebarmenu when hovered */
-         .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+         .skin-black .main-sidebar .sidebar .sidebar-menu a:hover{
                               background-color: #fff;
                               }
         /* toggle button when hovered  */                    
-         .skin-blue .main-header .navbar .sidebar-toggle:hover{
+         .skin-black .main-header .navbar .sidebar-toggle:hover{
                               background-color: #fff;
                               }
                               ')))
