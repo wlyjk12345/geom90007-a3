@@ -94,7 +94,40 @@ poi_panel <- tabPanel("poi",
                                                selected = c("Cafes and Restaurants", "Takeaway Food Services", 
                                                             "Pubs, Taverns and Bars", "Accommodation", 
                                                             "Bakery Product Manufacturing (Non-factory based)")),
-                            helpText("Use the search bar to find facility in Melbourne.")
+                            helpText("Use the search bar to find facility in Melbourne."),
+                            # Add links with the shiny-p class
+                            hr(),
+                            tags$a(
+                              HTML('<img src="images/cafe.png" style="width: 20px; height: 20px;"> Cafes and Restaurants'),
+                              href = "https://www.timeout.com/melbourne/restaurants-cafes",
+                              class = "shiny-p"
+                            ),
+                            hr(),
+                            tags$a(
+                              HTML('<img src="images/takeout_food.png" style="width: 20px; height: 20px;"> Takeaway Food Services'),
+                              href = "https://www.ubereats.com/au/city/melbourne-vic",
+                              class = "shiny-p"
+                            ),
+                            hr(),
+                            tags$a(
+                              HTML('<img src="images/bar.png" style="width: 20px; height: 20px;"> Pubs, Taverns and Bars'),
+                              href = "https://www.timeout.com/melbourne/bars/the-best-pubs-in-melbourne",
+                              class = "shiny-p"
+                            ),
+                            hr(),
+                            tags$a(
+                              HTML('<img src="images/accomodation.png" style="width: 20px; height: 20px;"> Accommodation'),
+                              href = "https://www.visitvictoria.com/regions/melbourne/places-to-stay",
+                              class = "shiny-p"
+                            ),
+                            hr(),
+                            tags$a(
+                              # HTML('<img src="images/bakery.png" style="width: 20px; height: 20px;">    Bakery Product Manufacturing (Non-factory based)'), 
+                              href = "https://www.afgc.org.au/wp-content/uploads/2019/06/Food-and-Grocery-Manufacturing-Report-North-Victoria-2018-Final-Public-Report.pdf",
+                              class = "shiny-p"
+                            )
+                            
+                            # Add more links as needed
                           ),
                           mainPanel(
                             leafletOutput("map", height = 1000, width = 600)
@@ -130,16 +163,35 @@ tour_panel <- tabPanel("tour",
                              
                              # Add links with the shiny-p class
                              hr(),
-                             a("About Melbourne WiFi", href = "https://www.visitvictoria.com/practical-information/wifi-hotspots", class = "shiny-p"),
+                             tags$a(
+                               HTML('<img src="images/wifi.png" style="width: 20px; height: 20px;"> WiFi'),
+                               href = "https://www.visitvictoria.com/practical-information/wifi-hotspots",
+                               class = "shiny-p"
+                             ),
                              hr(),
-                             a("About Tram Stops", href = "https://www.ptv.vic.gov.au/assets/PTV-default-site/Maps-and-Timetables-PDFs/Maps/Network-maps/Victorian-Train-Network-Map-May-2023-v3.pdf.pdf", class = "shiny-p"),
+                             tags$a(
+                               HTML('<img src="images/tram.png" style="width: 20px; height: 20px;">  Tram Stops'),
+                               href = "https://www.ptv.vic.gov.au/assets/PTV-default-site/Maps-and-Timetables-PDFs/Maps/Network-maps/Victorian-Train-Network-Map-May-2023-v3.pdf.pdf",
+                               class = "shiny-p"
+                             ),
                              hr(),
-                             a("About Bus Stops", href = "https://citymapper.com/melbourne/bus/stops?name=&coords=-37.817237%2C144.967974", class = "shiny-p"),
+                             tags$a(
+                               HTML('<img src="images/bus.png" style="width: 20px; height: 20px;">  Bus Stops'),
+                               href = "https://citymapper.com/melbourne/bus/stops?name=&coords=-37.817237%2C144.967974",
+                               class = "shiny-p"
+                             ),
                              hr(),
-                             a("About Bike Share Docks", href = "https://melbournebikeshare.com.au/", class = "shiny-p"),
+                             tags$a(
+                               HTML('<img src="images/bike.png" style="width: 20px; height: 20px;">   Bike Share Docks'),
+                               href = "https://melbournebikeshare.com.au/",
+                               class = "shiny-p"
+                             ),
                              hr(),
-                             a("About Routes", href = "https://www.ptv.vic.gov.au/more/maps/", class = "shiny-p"),
-                             
+                             tags$a(
+                               HTML('<img src="images/icone-trait-bleu.png" style="width: 20px; height: 20px;">    Routes'),
+                               href = "https://www.ptv.vic.gov.au/more/maps/",
+                               class = "shiny-p"
+                             )
                              
                              # Add more links as needed
                            ),

@@ -59,3 +59,10 @@ hr {
     /* You can add other styles as needed */
 }
 
+.blue-line-icon {
+    display: inline-block;
+    width: 20px; /* Adjust the width as needed */
+    height: 2px; /* Adjust the height as needed */
+    background-color: blue;
+    margin-right: 10px; /* Adjust the spacing between the icon and the text as needed */
+  }
