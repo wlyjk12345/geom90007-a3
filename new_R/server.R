@@ -3,7 +3,16 @@ server <- function(input, output, session) {
   
   output$map <- renderLeaflet({
     leaflet() %>%
-      addProviderTiles(providers$OpenStreetMap) %>%
+      # Base groups
+      addTiles(group = "OSM (default)") %>%
+      addProviderTiles(providers$Stadia.AlidadeSmooth, group = "Lite") %>%
+      addProviderTiles(providers$Stadia.AlidadeSmoothDark, group = "Dark") %>%
+      addProviderTiles(providers$OpenStreetMap, group = "Complex") %>%
+      # Layers control
+      addLayersControl(
+        baseGroups = c("Lite", "Dark", "Complex"),
+        options = layersControlOptions(collapsed = FALSE)
+      ) %>%
       setView(144.9631, -37.8136, zoom = 16) %>%
       addMarkers(data = cafes_data,
                  ~longitude, ~latitude,
@@ -47,7 +56,16 @@ server <- function(input, output, session) {
   ################For Local Facilities#######################
   output$newTabMap <- renderLeaflet({
     map <- leaflet() %>%
-      addProviderTiles(providers$OpenStreetMap) %>%
+      # Base groups
+      addTiles(group = "OSM (default)") %>%
+      addProviderTiles(providers$Stadia.AlidadeSmooth, group = "Lite") %>%
+      addProviderTiles(providers$Stadia.AlidadeSmoothDark, group = "Dark") %>%
+      addProviderTiles(providers$OpenStreetMap, group = "Complex") %>%
+      # Layers control
+      addLayersControl(
+        baseGroups = c("Lite", "Dark", "Complex"),
+        options = layersControlOptions(collapsed = FALSE)
+      ) %>%
       setView(144.9631, -37.8136, zoom = 16) %>%
       addMarkers(data = wifi_data, ~Longitude, ~Latitude, 
                  icon = ~wifi_icon,popup = ~paste("<strong>Name:</strong>", Name, "<br><strong>Long Name:</strong>", Long.Name, "<br><strong>Type:</strong>", Type, "<br><strong>Status:</strong>", Status),
