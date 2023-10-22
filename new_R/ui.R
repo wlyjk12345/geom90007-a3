@@ -157,8 +157,8 @@ tour_panel <- tabPanel("tour",
                            sidebarPanel(
                              h3("Filter Local Facilities"),
                              checkboxGroupInput("newTabFilter", "Filter by type:",
-                                                choices = c("WiFi", "Tram Stops", "Bus Stops", "Bike Share Docks", "Routes"),
-                                                selected = c("WiFi", "Tram Stops", "Bus Stops", "Bike Share Docks", "Routes")),
+                                                choices = c("WiFi", "Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "Routes"),
+                                                selected = c("WiFi", "Tram Stops", "Visitor Shuttle Bus Stops", "Bike Share Docks", "Routes")),
                              helpText("Filter the local facilities shown on the map."),
                              
                              # Add links with the shiny-p class
@@ -176,7 +176,7 @@ tour_panel <- tabPanel("tour",
                              ),
                              hr(),
                              tags$a(
-                               HTML('<img src="images/bus.png" style="width: 20px; height: 20px;">  Bus Stops'),
+                               HTML('<img src="images/bus.png" style="width: 20px; height: 20px;">  Visitor Shuttle Bus Stops'),
                                href = "https://citymapper.com/melbourne/bus/stops?name=&coords=-37.817237%2C144.967974",
                                class = "shiny-p"
                              ),
