@@ -130,7 +130,7 @@ poi_panel <- tabPanel("poi",
                             # Add more links as needed
                           ),
                           mainPanel(
-                            leafletOutput("map", height = 1000, width = 600)
+                            leafletOutput("map", height = 1000, width = 800)
                           )
                         ),
                         tags$hr(),
@@ -196,7 +196,7 @@ tour_panel <- tabPanel("tour",
                              # Add more links as needed
                            ),
                            mainPanel(
-                             leafletOutput("newTabMap", height = 1000, width = 600)
+                             leafletOutput("newTabMap", height = 1000, width = 800)
                            )
                          ),
                          tags$hr(),
@@ -311,7 +311,7 @@ ui <- dashboardPage(
       "
                                  /* App window sizing*/
                                  body{
-                                 min-width: 600px;
+                                 min-width: 900;
                                  margin: auto;
                                  overflow: auto;
                                  }
